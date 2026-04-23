@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Resume & Java Q&A" />
+  <title>Pritam Kumar Samal | Resume & Java Q&A</title>
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#101a33;
+      --muted:#9fb0d0;
+      --text:#e8eeff;
+      --accent:#7c5cff;
+      --accent2:#2dd4bf;
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1080px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:
+        radial-gradient(1200px 500px at 10% 0%, rgba(124,92,255,.25), transparent 60%),
+        radial-gradient(900px 400px at 90% 10%, rgba(45,212,191,.18), transparent 55%),
+        radial-gradient(700px 500px at 50% 100%, rgba(124,92,255,.12), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:16px 16px;
+      border:1px solid var(--line);
+      background:rgba(16,26,51,.55);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position:sticky; top:14px; z-index:10;
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .badge{
+      width:40px; height:40px; border-radius:14px;
+      background:linear-gradient(135deg, var(--accent), var(--accent2));
+      display:grid; place-items:center; font-weight:800;
+      color:#0b1020;
+    }
+    .brand h1{margin:0; font-size:15px; letter-spacing:.2px}
+    .brand p{margin:0; font-size:12px; color:var(--muted)}
+    .nav{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      padding:9px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.08);
+      font-size:13px; color:var(--muted);
+      transition:.18s ease;
+    }
+    .pill:hover{transform: translateY(-1px); color:var(--text); border-color: rgba(124,92,255,.35)}
+    .hero{
+      margin-top:18px;
+      display:grid; grid-template-columns: 1.25fr .75fr;
+      gap:16px;
+    }
+    @media (max-width: 900px){ .hero{grid-template-columns:1fr} .topbar{position:static} }
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background:rgba(16,26,51,.55);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+    .pad{padding:18px}
+    .headline{font-size:34px; line-height:1.12; margin:0 0 10px; letter-spacing:-.6px}
+    .sub{margin:0 0 14px; color:var(--muted)}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 16px}
+    .chip{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+    }
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      padding:11px 14px; border-radius:12px;
+      border:1px solid rgba(124,92,255,.35);
+      background:rgba(124,92,255,.14);
+      color:var(--text);
+      font-weight:600; font-size:13px;
+      display:inline-flex; align-items:center; gap:10px;
+      transition:.18s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(124,92,255,.22)}
+    .btn.secondary{
+      border-color: var(--line);
+      background: rgba(0,0,0,.10);
+      color: var(--muted);
+    }
+    .btn.secondary:hover{color:var(--text); border-color: rgba(45,212,191,.32)}
+    .kv{display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:10px}
+    .k{
+      padding:12px 12px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.10);
+      border-radius: 14px;
+    }
+    .k .t{font-size:12px; color:var(--muted); margin:0 0 3px}
+    .k .v{font-size:14px; margin:0}
+    .section{margin-top:16px}
+    .section h2{
+      margin:0 0 12px;
+      font-size:16px;
+      letter-spacing:.2px;
+      color: #dfe8ff;
+    }
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    @media (max-width: 900px){ .grid2{grid-template-columns:1fr} }
+    .list{margin:0; padding-left:18px; color: var(--muted)}
+    .list li{margin:6px 0}
+    .mini{
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(0,0,0,.10);
+      color: var(--muted);
+      font-size:13px;
+    }
+
+    /* Q&A */
+    .qa-tools{display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 6px}
+    .input, .select{
+      padding:11px 12px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.12);
+      color: var(--text);
+      outline:none;
+      min-width: 220px;
+    }
+    .select{min-width: 180px}
+    .qa{
+      margin-top:10px;
+      display:grid;
+      gap:10px;
+    }
+    details{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(0,0,0,.10);
+      overflow:hidden;
+    }
+    summary{
+      cursor:pointer;
+      padding:14px 14px;
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+    }
+    summary::-webkit-details-marker{display:none}
+    .qtitle{font-weight:650; font-size:14px}
+    .tag{
+      font-family: var(--mono);
+      font-size:12px;
+      color: var(--muted);
+      border:1px solid var(--line);
+      padding:4px 8px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+    .answer{
+      padding:0 14px 14px;
+      color: var(--muted);
+      font-size:14px;
+    }
+    pre{
+      margin:10px 0 0;
+      padding:12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      overflow:auto;
+      color:#dbe7ff;
+    }
+    footer{
+      margin-top:22px;
+      color: var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+    .muted{color: var(--muted)}
+    .split{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+
+    /* ✅ SCROLLABLE: Resume Snapshot + Projects cards */
+    .scroll-card{
+      max-height: 320px;    /* adjust as needed */
+      overflow: auto;
+      padding-right: 10px;  /* space for scrollbar */
+    }
+    .scroll-card::-webkit-scrollbar{ width: 10px; }
+    .scroll-card::-webkit-scrollbar-thumb{
+      background: rgba(124,92,255,.25);
+      border-radius: 999px;
+      border: 2px solid rgba(0,0,0,.10);
+    }
+
+    /* ✅ Projects clickable items */
+    .project-list{ padding-left:0; list-style:none; margin:0; display:grid; gap:10px; }
+    .project-item{
+      width:100%;
+      text-align:left;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 14px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.10);
+      color: var(--text);
+      cursor:pointer;
+      transition: .18s ease;
+    }
+    .project-item:hover{
+      transform: translateY(-1px);
+      border-color: rgba(124,92,255,.35);
+      background: rgba(124,92,255,.10);
+    }
+
+    /* ✅ Modal (styled like your cards) */
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(6px);
+      z-index:999;
+    }
+    .modal-overlay.show{ display:flex; }
+    .modal-card{
+      width:min(860px, 100%);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(16,26,51,.75);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modal-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .modal-title{
+      font-size:18px;
+      font-weight:750;
+      letter-spacing:.2px;
+      margin:0;
+    }
+    .modal-subtitle{
+      font-size:13px;
+      color: var(--muted);
+      margin-top:4px;
+    }
+    .modal-close{
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.20);
+      color: var(--text);
+      border-radius: 12px;
+      width:40px;
+      height:40px;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+    .modal-close:hover{
+      border-color: rgba(45,212,191,.35);
+      transform: translateY(-1px);
+    }
+    .modal-body{
+      padding:16px;
+	  max-height: 55vh;
+	  overflow-y: auto;
+    }
+	.modal-body::-webkit-scrollbar { width: 10px; }
+	.modal-body::-webkit-scrollbar-thumb{
+	  background: rgba(124,92,255,.25);
+	  border-radius: 999px;
+	  border: 2px solid rgba(0,0,0,.15);
+	}
+    .modal-section{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(0,0,0,.12);
+      padding:14px;
+    }
+    .modal-h{
+      font-size:12px;
+      color: var(--muted);
+      letter-spacing:.22px;
+      text-transform: uppercase;
+      margin-bottom:8px;
+    }
+    .modal-p{
+      color: var(--text);
+      opacity:.92;
+      font-size:14px;
+    }
+    .modal-list{
+      margin:0;
+      padding-left:18px;
+      color: var(--text);
+      opacity:.90;
+      display:grid;
+      gap:6px;
+    }
+    .modal-chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .modal-chip{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+    }
+    .modal-foot{
+      padding:14px 16px;
+      border-top:1px solid var(--line);
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+    }
+  </style>
+</head>
+
+<body> 
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="badge">PS</div>
+        <div>
+          <h1>Pritam Kumar Samal</h1>
+          <p>Java Backend • Spring Boot • Microservices • Cloud</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="pill" href="#resume">Resume</a>
+        <a class="pill" href="#java-qa">Java Q&A</a>
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card pad">
+        <h2 class="headline">Resume + Java Interview Q&A<br/><span class="muted">in one Page</span></h2>
+        <p class="sub">
+          Backend-focused portfolio with a quick resume snapshot and a searchable Java Q&A library.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Java 8/17/21</span>
+          <span class="chip">Spring Boot</span>
+          <span class="chip">Microservices</span>
+          <span class="chip">Apache Kafka</span>
+		  <span class="chip">Apache Camel</span>
+		  <span class="chip">Rest APIs</span>
+		  <span class="chip">ActiveMQ</span>
+          <span class="chip">Spring Batch</span>
+          <span class="chip">AWS / Azure</span>
+          <span class="chip">SQL + MongoDB</span>
+        </div>
+
+        <div class="btnrow">
+          <a class="btn" href="/assets/Pritam_Samal_Java_SpringBoot_Microservices_Developer.pdf" target="_blank" rel="noopener">Download Resume</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/tech-pritamsamal" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn secondary" href="https://github.com/pksamal1995" target="_blank" rel="noopener">GitHub</a>
+        </div>
+
+        <div class="kv">
+          <div class="k">
+            <p class="t">Primary Role</p>
+            <p class="v">Java Backend Developer / Cloud Engineering</p>
+          </div>
+          <div class="k">
+            <p class="t">Strengths</p>
+            <p class="v">Payments • Event-driven • Resilience • Performance</p>
+          </div>
+          <div class="k">
+            <p class="t">Location</p>
+            <p class="v">India</p>
+          </div>
+          <div class="k">
+            <p class="t">Focus</p>
+            <p class="v">Interview-ready notes + production-grade patterns</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card pad">
+        <div class="split">
+          <h2 style="margin:0;font-size:16px;">Quick Highlights</h2>
+          <span class="tag">Updated: <span id="updated"></span></span>
+        </div>
+        <div class="section">
+          <ul class="list">
+            <li>Microservices, REST APIs, and integration-heavy backend systems.</li>
+            <li>Event-driven messaging with Kafka; batch workloads with Spring Batch.</li>
+            <li>Cloud-native delivery and CI/CD with modern DevOps practices.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>What’s inside</h2>
+          <div class="mini">✅ Recruiter-friendly resume section</div><br/>
+          <div class="mini">✅ Searchable Java Q&A (filters + tags)</div><br/>
+          <div class="mini">✅ Projects modal with roles & tech</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Resume + Projects -->
+    <section id="resume" class="section grid2">
+      <div class="card pad scroll-card">
+        <h2>Resume Snapshot</h2>
+        <p class="muted" style="margin-top:0">
+          Short web-friendly summary. Keep full resume as a PDF link above.
+        </p>
+        <ul class="list">
+          <li><b>Backend Java</b> (Java 8–21), strong on Collections, Streams, concurrency & exception handling.</li>
+          <li><b>Spring Boot</b> microservices: resiliency patterns, REST APIs, integrations.</li>
+          <li><b>Messaging + Batch</b>: Kafka & Spring Batch for event-driven + ETL style workloads.</li>
+          <li><b>Cloud</b>: AWS fundamentals + containerized deployments; CI/CD experience.</li>
+          <li><b>Observability</b>: logs/monitoring mindset; production support exposure.</li>
+          <li><b>Security</b>: API payload protection, secure integration patterns.</li>
+        </ul>
+      </div>
+
+      <div class="card pad scroll-card" id="projects">
+        <h2>Projects</h2>
+        <p class="muted" style="margin-top:0">
+          Click a project to view <code>Description</code>, <code>Roles & Responsibilities</code>, and <code>Tech</code>.
+        </p>
+
+        <ul class="project-list">
+          <li>
+            <button class="project-item" type="button" data-project="eps">
+              <span><b>ENTERPRISE PAYMENT SYSTEM</b> — payment orchestration, gateway integrations, security.</span>
+              <span class="tag">Payments</span>
+            </button>
+          </li>
+
+          <li>
+            <button class="project-item" type="button" data-project="eps-reports">
+              <span><b>EPS REPORTS</b> — consolidated transaction reports, scheduled emails.</span>
+              <span class="tag">File Processing</span>
+            </button>
+          </li>
+
+          <li>
+            <button class="project-item" type="button" data-project="edh">
+              <span><b>ENTERPRISE DOC HUB</b> — ingestion, validation, file generation, S3.</span>
+              <span class="tag">Integration</span>
+            </button>
+          </li>
+		  
+		  <li>
+            <button class="project-item" type="button" data-project="paris">
+              <span><b>PARIS - BATCH PROCESSING</b> — ETL, validation, Batch Processing, Kafka Streaming, file generation.</span>
+              <span class="tag">Batch Processing</span>
+            </button>
+          </li>
+		  
+		  <li>
+            <button class="project-item" type="button" data-project="catering">
+              <span><b>IN FLIGHT CATERING</b> — notification, validation, report generation, rest api calls.</span>
+              <span class="tag">e-commerce</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Java Q&A -->
+    <section id="java-qa" class="section">
+      <div class="card pad">
+        <div class="split">
+          <h2 style="margin:0;">Java Topics Q&A</h2>
+          <span class="tag">Search + Filter</span>
+        </div>
+
+        <div class="qa-tools">
+          <input id="search" class="input" type="search" placeholder="Search… e.g., HashMap, Streams, Thread" />
+          <select id="category" class="select">
+            <option value="all">All categories</option>
+          </select>
+          <button class="btn secondary" id="reset" type="button">Reset</button>
+        </div>
+
+        <div id="qaList" class="qa"></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="card pad">
+        <h2>Contact</h2>
+        <p class="muted" style="margin-top:0">Update these with your preferred details.</p>
+        <div class="kv">
+          <div class="k">
+            <p class="t">Email</p>
+            <p class="v"><a href="mailto:tech.samalpritam@gmail.com">tech.samalpritam@gmail.com</a></p>
+          </div>
+          <div class="k">
+            <p class="t">Phone</p>
+            <p class="v">+91-8328849209</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Built with ♥ on GitHub Pages • <span class="muted">Static HTML/CSS/JS</span>
+    </footer>
+  </div>
+
+  <!-- ✅ Modal -->
+  <div id="projectModalOverlay" class="modal-overlay" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+      <div class="modal-head">
+        <div>
+          <div id="pm-title" class="modal-title">Project</div>
+          <div id="pm-subtitle" class="modal-subtitle">Subtitle</div>
+        </div>
+        <button class="modal-close" id="pmCloseBtn" type="button" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-section">
+          <div class="modal-h">Description</div>
+          <div class="modal-p" id="pmDesc"></div>
+        </div>
+
+        <div class="modal-section">
+          <div class="modal-h">Roles & Responsibilities</div>
+          <ul class="modal-list" id="pmRoles"></ul>
+        </div>
+
+        <div class="modal-section">
+          <div class="modal-h">Tech</div>
+          <div class="modal-chips" id="pmTech"></div>
+        </div>
+      </div>
+
+      <div class="modal-foot">
+        <button class="btn secondary" id="pmOkBtn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Updated badge date
+    (function(){
+      const d = new Date();
+      const el = document.getElementById("updated");
+      if(el){
+        el.textContent = d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"2-digit" });
+      }
+    })();
+
+    // ---- Q&A data ----
+    const qaData = [
+      { q:"How do you sort a Map by key in Java?", category:"Collections", tags:["Map","TreeMap","Sorting"],
+        a:"Use TreeMap for key-sorted map. Create a new TreeMap from an existing HashMap.",
+        code:`Map<String,Integer> map = new HashMap<>();
+map.put("b",2); map.put("a",1);
+Map<String,Integer> sorted = new TreeMap<>(map);`
+      },
+      { q:"How do you sort a Map by value in Java?", category:"Collections", tags:["Stream","Collectors","LinkedHashMap"],
+        a:"Stream entrySet(), sort by value, collect to LinkedHashMap to preserve order.",
+        code:`Map<String,Integer> sortedByVal =
+  map.entrySet().stream()
+     .sorted(Map.Entry.comparingByValue())
+     .collect(Collectors.toMap(
+        Map.Entry::getKey,
+        Map.Entry::getValue,
+        (a,b) -> a,
+        LinkedHashMap::new
+     ));`
+      },
+      { q:"Difference between HashMap and ConcurrentHashMap?", category:"Concurrency", tags:["Thread-safety","Map"],
+        a:"HashMap is not thread-safe; ConcurrentHashMap supports safe concurrent access and updates."
+      },
+      { q:"What is idempotency in APIs?", category:"System Design", tags:["Retries","Payments"],
+        a:"Idempotent operations can be repeated with the same result. Helps prevent duplicates during retries/timeouts."
+      }
+    ];
+
+    // Q&A Render + Filter
+    const categorySelect = document.getElementById("category");
+    const categories = ["all", ...new Set(qaData.map(x => x.category))];
+    categories.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c === "all" ? "All categories" : c;
+      categorySelect.appendChild(opt);
+    });
+
+    const qaList = document.getElementById("qaList");
+    const searchInput = document.getElementById("search");
+    const resetBtn = document.getElementById("reset");
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function renderQA(items){
+      qaList.innerHTML = "";
+      if(!items.length){
+        qaList.innerHTML = `<div class="mini">No matches. Try a different keyword or category.</div>`;
+        return;
+      }
+      items.forEach(item => {
+        const details = document.createElement("details");
+        const tags = (item.tags || []).map(t => `<span class="tag">${t}</span>`).join(" ");
+        details.innerHTML = `
+          <summary>
+            <span class="qtitle">${item.q}</span>
+            <span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+              <span class="tag">${item.category}</span>
+              ${tags}
+            </span>
+          </summary>
+          <div class="answer">
+            <div>${item.a}</div>
+            ${item.code ? `<pre><code>${escapeHtml(item.code)}</code></pre>` : ""}
+          </div>
+        `;
+        qaList.appendChild(details);
+      });
+    }
+
+    function applyFilters(){
+      const q = (searchInput.value || "").trim().toLowerCase();
+      const c = categorySelect.value;
+      const filtered = qaData.filter(item => {
+        const inCategory = (c === "all") || (item.category === c);
+        const hay = [item.q, item.a, item.category, ...(item.tags||[])].join(" ").toLowerCase();
+        const inSearch = !q || hay.includes(q);
+        return inCategory && inSearch;
+      });
+      renderQA(filtered);
+    }
+
+    searchInput.addEventListener("input", applyFilters);
+    categorySelect.addEventListener("change", applyFilters);
+    resetBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      categorySelect.value = "all";
+      applyFilters();
+    });
+    renderQA(qaData);
+
+    // ---- Projects Modal ----
+    const projects = {
+      "eps": {
+        title: "ENTERPRISE PAYMENT SYSTEM",
+        subtitle: "Payment orchestration • gateways • security • aviation enterprise",
+        desc: "Payment orchestration for an aviation enterprise handling transactions like charges, refunds, captures, etc. Supports multiple payment gateways and alternative payment methods; backs the ticketing UI with a secure, scalable payment solution.",
+        roles: [
+          "Implemented multiple payment gateways like VISA, Checkout, ContactPay, DPO, TABBY.",
+          "Maintained and enhanced gateways including Mastercard and American Express (Amex).",
+          "Delivered request/response patterns and REST endpoints details to QA and UI teams.",
+          "Implemented cryptography to protect API payloads.",
+          "Resolved SonarQube issues to mitigate vulnerabilities and code smells."
+        ],
+        tech: ["Java", "Spring Boot", "Apache Camel", "BouncyCastle"]
+      },
+      "eps-reports": {
+        title: "EPS REPORTS",
+        subtitle: "Daily/weekly consolidated transaction reporting",
+        desc: "Generates daily/weekly consolidated capture and transaction reports across FOPs (Forms of Payment) and APMs, and emails stakeholders.",
+        roles: [
+          "Implemented reports for multiple FOPs and APMs.",
+          "Supported ongoing maintenance and debugging of report pipelines.",
+          "Ensured stable generation and distribution of scheduled reports."
+        ],
+        tech: ["Java", "Spring Boot", "Spring Data JPA", "OpenCsv", "Apache Camel"]
+      },
+      "edh": {
+        title: "ENTERPRISE DOC HUB",
+        subtitle: "Ingestion via SFTP/SMTP • validation • file generation • AWS S3",
+        desc: "Receives financial files from multiple banks and payment systems, validates and processes them, and generates new output files for downstream in-house applications. Inputs arrive via SFTP/SMTP; processed data is stored in AWS S3 and an on‑prem database.",
+        roles: [
+          "Implemented parsing for PDF, XLSX, CSV, TXT, and HTML formats.",
+          "Built validation, exception handling, scheduler/file listener jobs.",
+          "Implemented backup jobs and missing-file trigger handling.",
+          "Applied Builder and Factory patterns for extensible file parsers."
+        ],
+        tech: ["Java", "Spring Boot", "Spring Data JPA", "AWS S3", "Apache Camel", "OpenCsv", "Zip4j", "PDFBox", "Jsoup"]
+      },
+	  "paris": {
+        title: "PARIS - BATCH PROCESSING",
+		subtitle: "Data Streaming via Apache Kafka • validation • transformation • Spring Batch",
+		desc: "Suite of six apps generating 23 vendor-consumed reports from daily market data feeds. It validates, reconciles with reference data and transforms into standardized outputs.",
+        roles: [
+		  "Built and maintained applications using Spring Boot and Spring Data JPA.", 
+		  "Designed Spring Batch jobs for multi-feed processing, tuned performance.", 
+		  "Improved batch job performance through tuning and optimization techniques.", 
+		  "Designed and implemented file watchers to trigger jobs upon file creation.", 
+		  "Configured CRON-based schedulers and developed dynamic scheduling to handle daylight saving adjustments.", 
+		  "Added DB polling for near-real-time processing.", 
+		  "Redesigned critical data feeds for accuracy and throughput.", 
+		  "Created reusable utilities leveraged across six apps.", 
+		  "Supported deployments for smooth releases." 
+        ],
+        tech: ["Java", "Spring Boot", "Gradle", "Spring Batch", "Jenkins", "Docker", "Apache Kafka"]
+      },
+	  "catering": {
+        title: "IN FLIGHT CATERING",
+        subtitle: "Rest API communication • email/sms notification",
+        desc: "Manages in-flight catering via a network of third-party partners and suppliers at various airports rather than operating a single, in-house solution. Its approach is designed to be flexible, offering different meal options based on ticket type, flight duration, and destination. It produces daily, weekly and monthly reports on vendors and consumption.",
+        roles: [
+          "Involved in Code Enhancement and Bug Fixing",
+		  "Involved in developing web services using Spring Boot Rest Services"
+        ],
+        tech: ["Java", "Spring Boot", "Spring Data JPA"]
+      }
+    };
+
+    const overlay = document.getElementById("projectModalOverlay");
+    const titleEl = document.getElementById("pm-title");
+    const subEl   = document.getElementById("pm-subtitle");
+    const descEl  = document.getElementById("pmDesc");
+    const rolesEl = document.getElementById("pmRoles");
+    const techEl  = document.getElementById("pmTech");
+
+    const closeBtn = document.getElementById("pmCloseBtn");
+    const okBtn    = document.getElementById("pmOkBtn");
+
+    function openModal(key){
+      const p = projects[key];
+      if(!p){
+         console.error("Project not found:", key);
+         alert("Project details not configured yet.");
+         return;
+      }
+
+      titleEl.textContent = p?.title ?? "Untitled Project";
+      subEl.textContent   = p.subtitle;
+      descEl.textContent  = p.desc;
+
+      rolesEl.innerHTML = "";
+      p.roles.forEach(r => {
+        const li = document.createElement("li");
+        li.textContent = r;
+        rolesEl.appendChild(li);
+      });
+
+      techEl.innerHTML = "";
+      p.tech.forEach(t => {
+        const s = document.createElement("span");
+        s.className = "modal-chip";
+        s.textContent = t;
+        techEl.appendChild(s);
+      });
+
+      overlay.classList.add("show");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+
+    function closeModal(){
+      overlay.classList.remove("show");
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    // IMPORTANT: Bind after DOM exists (script is at end, so OK)
+    document.querySelectorAll(".project-item").forEach(btn => {
+      btn.addEventListener("click", () => openModal(btn.dataset.project));
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+    okBtn.addEventListener("click", closeModal);
+
+    overlay.addEventListener("click", (e) => {
+      if(e.target === overlay) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && overlay.classList.contains("show")) closeModal();
+    });
+  </script>
+</body>
+</html>
